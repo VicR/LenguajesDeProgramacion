@@ -13,3 +13,9 @@ assert(joven(X):-edad(X,Y),Y<18).
 :-dynamic tabla/3.
 sumP(X,Y,Z):-tabla(X,Y,Z), !.
 sumP(X,Y,Z):- Z is (X+Y) * (X+Y), assertz(tabla(X,Y,Z)).
+
+##Guardar los circulares primos en una table
+:-dynamic tableP/1.
+Prime(X, 1):-tableP(X), !.
+number_chars(X,list).
+Prime([H|T], Ct):- 0 is H mod X , Ct > 4, ! ; Prime([T|H], Ct+1).
